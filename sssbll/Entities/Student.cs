@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sssbll
 {
-    public class Class1
+    public class Student
     {
     }
 }

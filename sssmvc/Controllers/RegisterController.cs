@@ -7,18 +7,25 @@ using System.Web.Mvc;
 
 namespace sssmvc.Controllers
 {
-    public class RegisterController : Controller
-    {
-        // GET: Register
-        public ActionResult Index()
-        {
-            RegisterModel model = new RegisterModel
-            {
-                Name = "leo",
-                Password = "1234"
-            };
+	public class RegisterController : Controller
+	{
+		
+		public ActionResult Index()
+		{
+			RegisterModel model = new RegisterModel
+			{
+				Name = "leo",
+				Password = "1234"
+			};
 
-            return View(model);
-        }
-    }
+			return View(model);
+		}
+
+		[HttpPost]
+		public ActionResult Index(RegisterModel model)
+		{
+			return View();
+		}
+
+	}
 }
