@@ -1,0 +1,26 @@
+﻿@model wwwui.Models.RegisterModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label>邀请人：</label>
+        @Html.TextBoxFor(m => m.InvitedBy)
+        @Html.ValidationMessageFor(m => m.InvitedBy)
+    </div>
+    <div>
+        <label>用户名：</label>
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div>
+        <label>密码：</label>
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <button type="submit">提交</button>
+}

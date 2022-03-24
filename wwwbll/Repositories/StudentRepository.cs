@@ -1,11 +1,11 @@
-﻿using Entities;
+﻿using wwwbll.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories
+namespace wwwbll.Repositories
 {
     public class StudentRepository
     {
@@ -16,7 +16,8 @@ namespace Repositories
 
         public Student Find(string name)
         {
-            throw new NotImplementedException();
+            SqlDbContext context = new SqlDbContext();
+            return context.Students.Where(s => s.Name == name).SingleOrDefault();
         }
     }
 }
