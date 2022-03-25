@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace wwwbll.Entities
 {
-    public class Student
+    public class User : Entity
     {
-        public Student InvitedBy { get; set; }
+        public User InvitedBy { get; set; }
+
         public string Name { get; set; }
         public string Password { get; set; }
+
+        public void Register()
+		{
+
+		}
     }
 }

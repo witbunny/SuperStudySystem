@@ -11,10 +11,12 @@ namespace wwwui.Controllers
 {
     public class RegisterController : Controller
     {
-        private StudentRepository studentRepository;
+        private UserRepository userRepository;
+
 		public RegisterController()
 		{
-            studentRepository = new StudentRepository();
+            SqlDbContext context = new SqlDbContext();
+            userRepository = new UserRepository(context);
 		}
 
         public ActionResult Index()
@@ -27,13 +29,23 @@ namespace wwwui.Controllers
         {
 			if (!ModelState.IsValid)
 			{
-                return View();
+                return View(model);
 			}
 
-			if (studentRepository.Find(model.Name) != null)
+			if (userRepository.Find(model.Name) != null)
 			{
-                ModelState.AddModelError("", "* 用户名不能重复");
-			}
+                ModelState.AddModelError("Name", "* 用户名不能重复");
+                return View(model);
+            }
+
+            User newUser = new User
+            {
+                Name = model.Name,
+                Password = model.Password
+            };
+            newUser.Register();
+            int id = userRepository.Save(newUser);
+
             return View();
         }
     }
