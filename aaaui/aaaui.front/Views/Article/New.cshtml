@@ -1,0 +1,21 @@
+﻿@model aaaui.front.Models.Article.NewModel
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label>标题：</label>
+        @Html.TextBoxFor(m => m.Title)
+    </div>
+    <div>
+        <label>正文：</label>
+        @Html.TextAreaFor(m => m.Body)
+    </div>
+
+    <button type="submit">提交</button>
+}
+
