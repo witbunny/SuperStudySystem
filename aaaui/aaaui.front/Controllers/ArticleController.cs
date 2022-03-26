@@ -1,6 +1,5 @@
-﻿using aaabll.Entities;
-using aaabll.Repositories;
-using aaaui.front.Models.Article;
+﻿using aaasrv.ServiceInterface;
+using aaasrv.ViewModel.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +10,12 @@ namespace aaaui.front.Controllers
 {
     public class ArticleController : Controller
     {
-        private ArticleRepository articleRepository;
-        private UserRepository userRepository;
+        private IArticleService articleService;
 
 		public ArticleController()
 		{
-            SqlDbContext context = new SqlDbContext();
-            articleRepository = new ArticleRepository(context);
-            userRepository = new UserRepository(context);
+            articleService = new aaasrv.ProdService.ArticleService();
+            //articleService = new aaasrv.MockService.ArticleService();
 		}
 
         public ActionResult Index()
@@ -36,18 +33,7 @@ namespace aaaui.front.Controllers
         {
             int currentUserId = 1;
 
-            Article article = new Article
-            {
-                Title = model.Title,
-                Body = model.Body
-            };
-
-            //User author = userRepository.Find(currentUserId);
-            User author = userRepository.LoadProxy(currentUserId);
-            article.Author = author;
-
-            //articleRepository.context.Set<User>().Attach(author);
-            articleRepository.Save(article);
+            articleService.Publish(model, currentUserId);
 
             return View();
         }

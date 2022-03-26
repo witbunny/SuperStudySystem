@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace aaaui.front.Models
+namespace aaasrv.ViewModel
 {
 	public class RegisterModel
 	{

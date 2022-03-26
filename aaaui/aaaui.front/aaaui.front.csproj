@@ -133,8 +133,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Article\NewModel.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -193,13 +192,21 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\aaabll\aaabll.Entities\aaabll.Entities.csproj">
-      <Project>{93e39d17-aac6-4bc5-9fbf-915ebe0be41d}</Project>
-      <Name>aaabll.Entities</Name>
+    <ProjectReference Include="..\..\aaasrv\aaasrv.MockService\aaasrv.MockService.csproj">
+      <Project>{2381bc37-687e-49a8-ae10-7e74af5e432f}</Project>
+      <Name>aaasrv.MockService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\aaabll\aaabll.Repositories\aaabll.Repositories.csproj">
-      <Project>{b4e013e4-ba62-4046-afb1-4287f2345ea6}</Project>
-      <Name>aaabll.Repositories</Name>
+    <ProjectReference Include="..\..\aaasrv\aaasrv.ProdService\aaasrv.ProdService.csproj">
+      <Project>{8ff80068-7940-419b-87a4-7ccf1fd21bb4}</Project>
+      <Name>aaasrv.ProdService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\aaasrv\aaasrv.ServiceInterface\aaasrv.ServiceInterface.csproj">
+      <Project>{d71d286f-ec13-40a4-bf23-88b8758c44aa}</Project>
+      <Name>aaasrv.ServiceInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\aaasrv\aaasrv.ViewModel\aaasrv.ViewModel.csproj">
+      <Project>{f7c1118a-6ad3-4d0b-a099-4a608b4a5ea0}</Project>
+      <Name>aaasrv.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

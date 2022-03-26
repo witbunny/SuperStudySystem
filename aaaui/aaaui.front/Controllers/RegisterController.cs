@@ -1,6 +1,5 @@
-﻿using aaabll.Entities;
-using aaabll.Repositories;
-using aaaui.front.Models;
+﻿using aaasrv.ServiceInterface;
+using aaasrv.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +10,12 @@ namespace aaaui.front.Controllers
 {
     public class RegisterController : Controller
     {
-        private UserRepository userRepository;
+        private IRegisterService registerService;
 
 		public RegisterController()
 		{
-            SqlDbContext context = new SqlDbContext();
-            userRepository = new UserRepository(context);
+            registerService = new aaasrv.ProdService.RegisterService();
+            //registerService = new aaasrv.MockService.RegisterService();
 		}
 
         public ActionResult Index()
@@ -32,19 +31,13 @@ namespace aaaui.front.Controllers
                 return View(model);
 			}
 
-			if (userRepository.Find(model.Name) != null)
+			if (registerService.HasSameName(model.Name))
 			{
                 ModelState.AddModelError("Name", "* 用户名不能重复");
                 return View(model);
             }
 
-            User newUser = new User
-            {
-                Name = model.Name,
-                Password = model.Password
-            };
-            newUser.Register();
-            int id = userRepository.Save(newUser);
+            registerService.Register(model);
 
             return View();
         }
