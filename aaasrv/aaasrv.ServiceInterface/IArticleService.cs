@@ -10,5 +10,7 @@ namespace aaasrv.ServiceInterface
     public interface IArticleService
     {
         void Publish(NewModel model, int currentUserId);
+
+        void Publish(NewModel model);
     }
 }

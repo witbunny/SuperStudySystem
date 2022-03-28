@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace aaaui.front.Controllers
 {
-    public class LogController : Controller
+	public class LogController : Controller
     {
         private ILogService logService;
 

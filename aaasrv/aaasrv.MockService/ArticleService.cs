@@ -14,5 +14,10 @@ namespace aaasrv.MockService
 		{
 			throw new NotImplementedException();
 		}
+
+		public void Publish(NewModel model)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

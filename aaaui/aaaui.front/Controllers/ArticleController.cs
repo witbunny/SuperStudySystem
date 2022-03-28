@@ -1,6 +1,7 @@
 ﻿using aaasrv.ServiceInterface;
 using aaasrv.ViewModel;
 using aaasrv.ViewModel.Article;
+using aaaui.front.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,17 +11,17 @@ using System.Web.Mvc;
 
 namespace aaaui.front.Controllers
 {
-    public class ArticleController : Controller
+    public class ArticleController : BaseController
     {
         private IArticleService articleService;
-        private ILogService logService;
+        
 
         public ArticleController()
 		{
             articleService = new aaasrv.ProdService.ArticleService();
             //articleService = new aaasrv.MockService.ArticleService();
 
-            logService = new aaasrv.ProdService.LogService();
+            
         }
 
         public ActionResult Index()
@@ -36,32 +37,28 @@ namespace aaaui.front.Controllers
         [HttpPost]
         public ActionResult New(NewModel model)
         {
-            NameValueCollection userCookie = Request.Cookies[Keys.User]?.Values;
 
-			if (userCookie == null)
-			{
-                throw new Exception();
-			}
+			//if (GetCurrentUserId() == -1)
+			//{
+			//	return RedirectToAction("On", "Log");
+			//}
 
-            int currentUserId = int.Parse(userCookie[Keys.Id]);
-            string currentUserPwd = userCookie[Keys.Password];
-
-            UserModel existUser = logService.Find(currentUserId);
-
-            if (existUser == null)
-            {
-                throw new Exception();
-            }
-
-            if (existUser.Password != currentUserPwd)
-            {
-                throw new Exception();
-            }
+			//articleService.Publish(model, GetCurrentUserId());
 
 
-            articleService.Publish(model, currentUserId);
 
-            return View();
+			//if (CookieHelper.GetCurrentUserId() == -1)
+			//{
+			//    return RedirectToAction("On", "Log");
+			//}
+
+			//articleService.Publish(model, CookieHelper.GetCurrentUserId());
+
+
+
+			articleService.Publish(model);
+
+			return View();
         }
     }
 }
