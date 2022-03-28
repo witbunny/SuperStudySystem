@@ -1,5 +1,5 @@
 ﻿using aaasrv.ServiceInterface;
-using aaasrv.ViewModel;
+using aaasrv.ViewModel.Register;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace aaaui.front.Controllers
 {
-    public class RegisterController : Controller
+	public class RegisterController : Controller
     {
         private IRegisterService registerService;
 

@@ -129,10 +129,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Keys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +175,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Article\New.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Log\On.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -192,6 +195,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\aaaglb\aaaglb.Global\aaaglb.Global.csproj">
+      <Project>{6ea2bcd5-0471-44ad-aeef-c3e1c8f67e68}</Project>
+      <Name>aaaglb.Global</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\aaasrv\aaasrv.MockService\aaasrv.MockService.csproj">
       <Project>{2381bc37-687e-49a8-ae10-7e74af5e432f}</Project>
       <Name>aaasrv.MockService</Name>

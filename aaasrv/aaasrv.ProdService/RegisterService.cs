@@ -1,7 +1,8 @@
 ﻿using aaabll.Entities;
 using aaabll.Repositories;
+using aaaglb.Global;
 using aaasrv.ServiceInterface;
-using aaasrv.ViewModel;
+using aaasrv.ViewModel.Register;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace aaasrv.ProdService
 			User newUser = new User
 			{
 				Name = model.Name,
-				Password = model.Password
+				Password = model.Password.MD5Encrypt()
 			};
 			newUser.Register();
 			int id = userRepository.Save(newUser);

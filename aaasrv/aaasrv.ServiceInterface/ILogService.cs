@@ -1,4 +1,4 @@
-﻿using aaasrv.ViewModel.Register;
+﻿using aaasrv.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace aaasrv.ServiceInterface
 {
-	public interface IRegisterService
+	public interface ILogService
 	{
-		bool HasSameName(string name);
-		void Register(RegisterModel model);
+		UserModel Find(string name);
+		UserModel Find(int id);
 	}
 }
