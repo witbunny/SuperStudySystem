@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace aaasrv.ProdService
 {
-	public class RegisterService : IRegisterService
+	public class RegisterService : BaseService, IRegisterService
 	{
 		private UserRepository userRepository;
 
 		public RegisterService()
 		{
-			SqlDbContext context = new SqlDbContext();
-			userRepository = new UserRepository(context);
+			//SqlDbContext context = new SqlDbContext();
+			userRepository = new UserRepository(Context);
 		}
 
 		public bool HasSameName(string name)

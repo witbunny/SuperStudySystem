@@ -17,9 +17,9 @@ namespace aaasrv.ProdService
 
 		public ArticleService()
 		{
-            SqlDbContext context = new SqlDbContext();
-            articleRepository = new ArticleRepository(context);
-            userRepository = new UserRepository(context);
+            //SqlDbContext context = new SqlDbContext();
+            articleRepository = new ArticleRepository(Context);
+            userRepository = new UserRepository(Context);
         }
 
         public void Publish(NewModel model, int currentUserId)
@@ -53,8 +53,8 @@ namespace aaasrv.ProdService
 
 			//User author = userRepository.Find(currentUserId);
 			//User author = userRepository.LoadProxy(currentUserId);
-			User author = userRepository.LoadProxy(GetCurrentUser().Id);
-			//User author = GetCurrentUser();
+			//User author = userRepository.LoadProxy(GetCurrentUser().Id);
+			User author = GetCurrentUser();
 			article.Author = author;
 
             //articleRepository.context.Set<User>().Attach(author);

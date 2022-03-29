@@ -18,9 +18,21 @@ namespace aaasrv.ProdService
 
 		public BaseService()
 		{
-            SqlDbContext context = new SqlDbContext();
-            userRepository = new UserRepository(context);
+            //SqlDbContext context = new SqlDbContext();
+            userRepository = new UserRepository(Context);
         }
+
+        protected SqlDbContext Context
+		{
+            get
+			{
+				if (HttpContext.Current.Items[Keys.DbContext] == null)
+				{
+                    HttpContext.Current.Items[Keys.DbContext] = new SqlDbContext();
+                } //else nothing
+                return (SqlDbContext)HttpContext.Current.Items[Keys.DbContext];
+            }
+		}
 
         public User GetCurrentUser()
         {

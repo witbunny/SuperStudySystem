@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace aaasrv.ProdService
 {
-	public class LogService : ILogService
+	public class LogService : BaseService, ILogService
 	{
 		private UserRepository userRepository;
 
 		public LogService()
 		{
-			SqlDbContext context = new SqlDbContext();
-			userRepository = new UserRepository(context);
+			//SqlDbContext context = new SqlDbContext();
+			userRepository = new UserRepository(Context);
 		}
 
 		public UserModel Find(string name)
