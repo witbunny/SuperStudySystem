@@ -31,6 +31,7 @@ namespace aaaui.front.Controllers
 
         public ActionResult New()
         {
+            //throw new Exception();
             return View();
         }
 

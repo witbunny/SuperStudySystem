@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using aaaui.front.Filters;
+using System.Web;
 using System.Web.Mvc;
 
 namespace aaaui.front
@@ -8,6 +9,8 @@ namespace aaaui.front
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
 			filters.Add(new HandleErrorAttribute());
+
+			filters.Add(new ContextPerRequest());
 		}
 	}
 }
