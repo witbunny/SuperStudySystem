@@ -34,7 +34,7 @@ namespace aaasrv.ProdService
 				Password = model.Password.MD5Encrypt()
 			};
 			newUser.Register();
-			int id = userRepository.Save(newUser);
+			int id = userRepository.Add(newUser);
 		}
 	}
 }

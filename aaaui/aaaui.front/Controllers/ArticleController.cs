@@ -61,5 +61,24 @@ namespace aaaui.front.Controllers
 
 			return View();
         }
+
+
+        public ActionResult Edit(int id)
+		{
+            //id.HasValue
+            //int intid = id.Value;
+
+            EditModel model = articleService.Find(id);
+
+            return View(model);
+		}
+
+        [HttpPost]
+        public ActionResult Edit(int id, EditModel model)
+        {
+            articleService.Edit(id, model);
+
+            return View(model);
+        }
     }
 }

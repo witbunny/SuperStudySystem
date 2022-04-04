@@ -1,4 +1,5 @@
-﻿using System;
+﻿using aaasrv.ViewModel.Article;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace aaasrv.ViewModel
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Password { get; set; }
+
+		public IList<SingleModel> Article { get; set; }
 	}
 }

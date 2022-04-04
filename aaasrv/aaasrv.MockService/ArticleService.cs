@@ -10,6 +10,16 @@ namespace aaasrv.MockService
 {
 	public class ArticleService : IArticleService
 	{
+		public void Edit(int id, EditModel model)
+		{
+			throw new NotImplementedException();
+		}
+
+		public EditModel Find(int id)
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Publish(NewModel model, int currentUserId)
 		{
 			throw new NotImplementedException();

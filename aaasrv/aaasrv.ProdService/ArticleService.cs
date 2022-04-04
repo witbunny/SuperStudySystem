@@ -2,6 +2,7 @@
 using aaabll.Repositories;
 using aaasrv.ServiceInterface;
 using aaasrv.ViewModel.Article;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,25 @@ namespace aaasrv.ProdService
             userRepository = new UserRepository(Context);
         }
 
-        public void Publish(NewModel model, int currentUserId)
+		public void Edit(int id, EditModel model)
+		{
+            Article article = articleRepository.Find(id);
+            Mapper.Map<EditModel, Article>(model, article);
+            articleRepository.Update();
+		}
+
+		public EditModel Find(int id)
+		{
+            Article article = articleRepository.Find(id);
+			if (article == null)
+			{
+                return null;
+			}
+            EditModel model = Mapper.Map<EditModel>(article);
+            return model;
+		}
+
+		public void Publish(NewModel model, int currentUserId)
 		{
             Article article = new Article
             {
@@ -35,7 +54,7 @@ namespace aaasrv.ProdService
             article.Author = author;
 
             //articleRepository.context.Set<User>().Attach(author);
-            articleRepository.Save(article);
+            articleRepository.Add(article);
         }
 
 		public void Publish(NewModel model)
@@ -45,11 +64,15 @@ namespace aaasrv.ProdService
                 throw new ArgumentException("");
 			}
 
-            Article article = new Article
-            {
-                Title = model.Title,
-                Body = model.Body
-            };
+            //MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<NewModel, Article>());
+            //IMapper mapper = config.CreateMapper();
+            Article article = Mapper.Map<Article>(model);
+
+            //Article article = new Article
+            //{
+            //    Title = model.Title,
+            //    Body = model.Body
+            //};
 
 			//User author = userRepository.Find(currentUserId);
 			//User author = userRepository.LoadProxy(currentUserId);
@@ -58,7 +81,7 @@ namespace aaasrv.ProdService
 			article.Author = author;
 
             //articleRepository.context.Set<User>().Attach(author);
-            articleRepository.Save(article);
+            articleRepository.Add(article);
         }
 	}
 }

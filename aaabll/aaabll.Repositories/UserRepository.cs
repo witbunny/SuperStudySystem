@@ -14,10 +14,10 @@ namespace aaabll.Repositories
 			//context = new SqlDbContext<User>();
 		}
 
-		public User Find(int id)
-        {
-			return dbset.Where(e => e.Id == id).SingleOrDefault();
-        }
+		//public User Find(int id)
+		//{
+		//	return dbset.Where(e => e.Id == id).SingleOrDefault();
+		//}
 
 		public User Find(string name)
 		{

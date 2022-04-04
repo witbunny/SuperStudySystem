@@ -22,13 +22,23 @@ namespace aaabll.Repositories
 			dbset = context.Set<T>();
 		}
 
-		public int Save(T entity)
+		public T Find(int id)
+		{
+			return dbset.Where(e => e.Id == id).SingleOrDefault();
+		}
+
+		public int Add(T entity)
 		{
 			dbset.Add(entity);
 			//context.Set<T>().Add(entity);
 			//context.Entities.Add(entity);
 			context.SaveChanges();
 			return entity.Id;
+		}
+
+		public void Update()
+		{
+			context.SaveChanges();
 		}
 
 		public void Remove(T entity)

@@ -2,6 +2,8 @@
 using aaabll.Repositories;
 using aaaglb.Global;
 using aaasrv.ViewModel;
+using aaasrv.ViewModel.Article;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -15,9 +17,35 @@ namespace aaasrv.ProdService
 {
 	public class BaseService
 	{
+        protected readonly static MapperConfiguration config;
+
+		static BaseService()
+		{
+            config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<NewModel, Article>(MemberList.None).ReverseMap();
+                cfg.CreateMap<EditModel, Article>()
+                    .ForMember(a => a.Author, opt => opt.Ignore())
+                    //.ForMember(a => a.Author, opt => opt.NullSubstitute(new User()))
+                    .ForMember(a => a.Title, opt => opt.MapFrom(e => e.Title))
+                .ReverseMap()
+                    //.ForMember(m => m.Title, opt => opt.Ignore())
+                ;
+                cfg.CreateMap<SingleModel, Article>().ReverseMap();
+            });
+
+#if DEBUG
+            //config.AssertConfigurationIsValid();
+#endif
+        }
+
+        protected IMapper Mapper
+		{
+            get { return config.CreateMapper(); }
+		}
+
         private UserRepository userRepository;
 
-		public BaseService()
+        public BaseService()
 		{
             //SqlDbContext context = new SqlDbContext();
             userRepository = new UserRepository(Context);

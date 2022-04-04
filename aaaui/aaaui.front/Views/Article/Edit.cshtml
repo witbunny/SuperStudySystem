@@ -1,0 +1,20 @@
+﻿@model aaasrv.ViewModel.Article.EditModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+<div>
+    <label>标题：</label>
+    @Html.TextBoxFor(m => m.Title)
+</div>
+<div>
+    <label>正文：</label>
+    @Html.TextAreaFor(m => m.Body)
+</div>
+
+<button type="submit">修改</button>
+}
