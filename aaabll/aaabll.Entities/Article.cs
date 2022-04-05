@@ -12,5 +12,10 @@ namespace aaabll.Entities
 		public string Body { get; set; }
 
 		public User Author { get; set; }
+
+		public void Publish()
+		{
+			CreateTime = DateTime.Now;
+		}
 	}
 }

@@ -5,18 +5,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B4E013E4-BA62-4046-AFB1-4287F2345EA6}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>aaabll.Repositories</RootNamespace>
-    <AssemblyName>aaabll.Repositories</AssemblyName>
+    <ProjectGuid>{10379E2B-585B-4667-9EDD-B6F4CA6A9BE0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>aaatool.DbFactory</RootNamespace>
+    <AssemblyName>aaatool.DbFactory</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -51,21 +53,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleRepository.cs" />
+    <Compile Include="ArticleFactory.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="SqlDbContext.cs" />
-    <Compile Include="UserRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\aaabll.Entities\aaabll.Entities.csproj">
-      <Project>{93e39d17-aac6-4bc5-9fbf-915ebe0be41d}</Project>
-      <Name>aaabll.Entities</Name>
-    </ProjectReference>
+    <Compile Include="UserFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\aaabll\aaabll.Entities\aaabll.Entities.csproj">
+      <Project>{93e39d17-aac6-4bc5-9fbf-915ebe0be41d}</Project>
+      <Name>aaabll.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\aaabll\aaabll.Repositories\aaabll.Repositories.csproj">
+      <Project>{b4e013e4-ba62-4046-afb1-4287f2345ea6}</Project>
+      <Name>aaabll.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Articles\应用.txt" />
+    <Content Include="Articles\md5.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

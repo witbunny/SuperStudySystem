@@ -15,7 +15,7 @@ namespace aaabll.Repositories
 		{
 			Database.Log = s =>
 			{
-				//Console.Write(s);
+				Console.Write(s);
 				Debug.Write(s);
 			};
 		}
