@@ -160,6 +160,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Filters\ContextPerRequest.cs" />
     <Compile Include="Filters\NeedLogOn.cs" />
     <Compile Include="Global.asax.cs">

@@ -12,5 +12,6 @@ namespace aaaglb.Global
 		public const string Id = "Id";
 		public const string Password = "Password";
 		public const string DbContext = "DbContext";
+		public const string Captcha = "Captcha";
 	}
 }
