@@ -13,6 +13,8 @@ namespace aaabll.Entities
         public string Name { get; set; }
         public string Password { get; set; }
 
+        public string IconPath { get; set; }
+
         public IList<Article> Articles { get; set; }
 
         public void Register()

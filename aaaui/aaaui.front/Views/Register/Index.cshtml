@@ -5,12 +5,12 @@
 
 <h2>Index</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div>
         <label>邀请人：</label>
-        @Html.TextBoxFor(m => m.InvitedBy)
-        @Html.ValidationMessageFor(m => m.InvitedBy)
+        @Html.TextBoxFor(m => m.Invited)
+        @Html.ValidationMessageFor(m => m.Invited)
     </div>
     <div>
         <label>用户名：</label>
@@ -30,5 +30,8 @@
     </div>
     
     <a href="/Shared/_GetCaptcha" download="cap">captcha</a>
+
+    <input type="file" name="icon" accept="image/*" />
+
     <button type="submit">提交</button>
 }

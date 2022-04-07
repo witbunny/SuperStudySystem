@@ -28,11 +28,14 @@ namespace aaasrv.ProdService
 
 		public void Register(RegisterModel model)
 		{
-			User newUser = new User
-			{
-				Name = model.Name,
-				Password = model.Password.MD5Encrypt()
-			};
+			//User newUser = new User
+			//{
+			//	Name = model.Name,
+			//	Password = model.Password.MD5Encrypt()
+			//};
+			User newUser = Mapper.Map<User>(model);
+			newUser.Password = model.Password.MD5Encrypt();
+
 			newUser.Register();
 			int id = userRepository.Add(newUser);
 		}

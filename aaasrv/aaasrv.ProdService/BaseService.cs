@@ -3,6 +3,7 @@ using aaabll.Repositories;
 using aaaglb.Global;
 using aaasrv.ViewModel;
 using aaasrv.ViewModel.Article;
+using aaasrv.ViewModel.Register;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,8 @@ namespace aaasrv.ProdService
                     //.ForMember(m => m.Title, opt => opt.Ignore())
                 ;
                 cfg.CreateMap<SingleModel, Article>().ReverseMap();
+
+                cfg.CreateMap<RegisterModel, User>().ReverseMap();
             });
 
 #if DEBUG

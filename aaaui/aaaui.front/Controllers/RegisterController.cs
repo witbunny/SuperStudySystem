@@ -3,6 +3,7 @@ using aaasrv.ServiceInterface;
 using aaasrv.ViewModel.Register;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,8 +26,34 @@ namespace aaaui.front.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(RegisterModel model)
+        public ActionResult Index(RegisterModel model, HttpPostedFileBase icon)
         {
+			if (icon.ContentLength > 1024*800)
+			{
+
+			}
+
+			if (icon.ContentType != "image/png")
+			{
+
+			}
+
+            string mainName = Guid.NewGuid().ToString();
+            string extensionName = Path.GetExtension(icon.FileName);
+
+            DateTime now = DateTime.Now;
+            string urlDirectory = $"\\UploadFiles\\{now.Year}\\{now.Month}\\{now.Day}";
+            string phyDirectory = Server.MapPath(urlDirectory);
+            Directory.CreateDirectory(phyDirectory);
+
+            string urlPath = $"{urlDirectory}\\{mainName}{extensionName}";
+            string phyPath = Server.MapPath(urlPath);
+
+            icon.SaveAs(phyPath);
+            model.IconPath = urlPath;
+
+            
+
             if (registerService.HasSameName(model.Name))
             {
                 ModelState.AddModelError("Name", "* 用户名不能重复");

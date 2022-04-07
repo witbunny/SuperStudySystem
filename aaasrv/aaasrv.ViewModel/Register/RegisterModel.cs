@@ -8,11 +8,13 @@ namespace aaasrv.ViewModel.Register
 {
 	public class RegisterModel
 	{
-		public string InvitedBy { get; set; }
+		public string Invited { get; set; }
 		[Required]
 		public string Name { get; set; }
 		[Required]
 		public string Password { get; set; }
 		public string Captcha { get; set; }
+
+		public string IconPath { get; set; }
 	}
 }
