@@ -15,6 +15,10 @@ namespace aaabll.Entities
 
         public string IconPath { get; set; }
 
+        public string Email { get; set; }
+        public int Code { get; set; }
+        public bool HasValidated { get; set; }
+
         public IList<Article> Articles { get; set; }
 
         public void Register()

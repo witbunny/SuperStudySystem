@@ -46,6 +46,7 @@
     <Compile Include="Article\EditModel.cs" />
     <Compile Include="Article\NewModel.cs" />
     <Compile Include="Article\SingleModel.cs" />
+    <Compile Include="Email\ActivateModel.cs" />
     <Compile Include="Log\OnModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register\RegisterModel.cs" />

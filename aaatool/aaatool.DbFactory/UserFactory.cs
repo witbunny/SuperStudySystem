@@ -1,5 +1,6 @@
 ﻿using aaabll.Entities;
 using aaabll.Repositories;
+using aaaglb.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace aaatool.DbFactory
 		private static User register(string name)
 		{
 			const string pwd = "1234";
-			User user = new User { Name = name, Password = pwd };
+			User user = new User { Name = name, Password = pwd.MD5Encrypt() };
 
 			user.Register();
 			

@@ -72,6 +72,10 @@
       <Project>{b4e013e4-ba62-4046-afb1-4287f2345ea6}</Project>
       <Name>aaabll.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\aaaglb\aaaglb.Global\aaaglb.Global.csproj">
+      <Project>{6ea2bcd5-0471-44ad-aeef-c3e1c8f67e68}</Project>
+      <Name>aaaglb.Global</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Articles\应用.txt" />

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Validate";
+}
+
+<h2>Validate</h2>
+
+@if (ViewBag.isValid)
+{
+    <p>邮箱已激活</p>
+}
+else
+{
+    <p>验证码错误或者过期</p>
+}

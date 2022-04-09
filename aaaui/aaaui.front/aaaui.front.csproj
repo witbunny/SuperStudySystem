@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -209,6 +210,8 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Log\On.cshtml" />
     <Content Include="Views\Article\Edit.cshtml" />
+    <Content Include="Views\Email\Activate.cshtml" />
+    <Content Include="Views\Email\Validate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

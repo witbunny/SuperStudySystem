@@ -1,0 +1,22 @@
+﻿@model aaasrv.ViewModel.Email.ActivateModel
+@{
+    ViewBag.Title = "Activate";
+}
+
+<h2>Activate</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Email：</label>
+        @Html.TextBoxFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <button type="submit" name="submit" value="send">发送</button>
+    <div>
+        <label>Code：</label>
+        @Html.TextBoxFor(m => m.Code)
+        @Html.ValidationMessageFor(m => m.Code)
+    </div>
+    <button type="submit" name="submit" value="validate">提交</button>
+}
