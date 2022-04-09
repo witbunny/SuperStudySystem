@@ -4,6 +4,7 @@ using aaaui.front.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,24 +26,45 @@ namespace aaaui.front.Controllers
             return View();
         }
 
-        [HttpPost]
+		//[HttpPost]
+		//[NeedLogOn]
+		//public ActionResult Activate(ActivateModel model)
+		//{
+		//	if (model.Submit == "send")
+		//	{
+		//		emailService.Send(model);
+		//		return View(model);
+		//	}
+		//	else if (model.Submit == "validate")
+		//	{
+		//		int uid = GetCurrentUserId();
+		//		return RedirectToAction("Validate", new { uid = uid, code = model.Code });
+		//	}
+		//	else
+		//	{
+		//		throw new ArgumentException();
+		//	}
+		//}
+
+		[HttpPost]
         [NeedLogOn]
-        public ActionResult Activate(ActivateModel model)
+        public async Task<ActionResult> Activate(ActivateModel model)
         {
-			if (model.Submit == "send")
-			{
-                emailService.Send(model);
+            if (model.Submit == "send")
+            {
+                //emailService.Send(model);
+                await emailService.SendAsync(model);
                 return View(model);
-			}
+            }
             else if (model.Submit == "validate")
-			{
+            {
                 int uid = GetCurrentUserId();
                 return RedirectToAction("Validate", new { uid = uid, code = model.Code });
-			}
-			else
-			{
+            }
+            else
+            {
                 throw new ArgumentException();
-			}
+            }
         }
 
         public ActionResult Validate(int uid, int code)

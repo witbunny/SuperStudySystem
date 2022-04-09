@@ -10,6 +10,7 @@ namespace aaasrv.ServiceInterface
 	public interface IEmailService
 	{
 		void Send(ActivateModel model);
+		Task SendAsync(ActivateModel model);
 		bool Validate(int uid, int code);
 	}
 }
