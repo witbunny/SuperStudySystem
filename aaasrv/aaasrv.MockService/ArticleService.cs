@@ -20,12 +20,17 @@ namespace aaasrv.MockService
 			throw new NotImplementedException();
 		}
 
+		public SingleModel GetById(int id)
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Publish(NewModel model, int currentUserId)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Publish(NewModel model)
+		public int Publish(NewModel model)
 		{
 			throw new NotImplementedException();
 		}

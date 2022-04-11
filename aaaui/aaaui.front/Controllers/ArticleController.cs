@@ -1,4 +1,5 @@
-﻿using aaasrv.ServiceInterface;
+﻿using aaaglb.Global;
+using aaasrv.ServiceInterface;
 using aaasrv.ViewModel;
 using aaasrv.ViewModel.Article;
 using aaaui.front.Filters;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -28,9 +30,10 @@ namespace aaaui.front.Controllers
 			this.articleService = articleService;
 		}
 
-		public ActionResult Index()
+		public ActionResult Index(int id)
 		{
-			return View();
+			SingleModel model = articleService.GetById(id);
+			return View(model);
 		}
 
 		public ActionResult New()
@@ -59,11 +62,14 @@ namespace aaaui.front.Controllers
 
 			//articleService.Publish(model, CookieHelper.GetCurrentUserId());
 
+			model.Body = model.Body.FilterTags();
+
+			
 
 
-			articleService.Publish(model);
+			int id = articleService.Publish(model);
 
-			return View();
+			return RedirectToAction("Index", new { id = id });
 		}
 
 
@@ -82,7 +88,7 @@ namespace aaaui.front.Controllers
 		{
 			articleService.Edit(id, model);
 
-			return View(model);
+			return RedirectToAction("Index", new { id = id });
 		}
 	}
 }

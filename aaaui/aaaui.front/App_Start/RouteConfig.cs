@@ -14,6 +14,13 @@ namespace aaaui.front
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
+				name: "Article",
+				url: "Article/{id}",
+				defaults: new { controller = "Article", action = "Index" },
+				constraints: new { id = @"\d+" }
+			);
+
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

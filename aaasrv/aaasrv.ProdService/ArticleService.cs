@@ -41,6 +41,17 @@ namespace aaasrv.ProdService
             return model;
 		}
 
+		public SingleModel GetById(int id)
+		{
+            Article article = articleRepository.Find(id);
+            if (article == null)
+            {
+                return null;
+            }
+            SingleModel model = Mapper.Map<SingleModel>(article);
+            return model;
+        }
+
 		public void Publish(NewModel model, int currentUserId)
 		{
             Article article = new Article
@@ -57,7 +68,7 @@ namespace aaasrv.ProdService
             articleRepository.Add(article);
         }
 
-		public void Publish(NewModel model)
+		public int Publish(NewModel model)
 		{
 			if (GetCurrentUser() == null)
 			{
@@ -82,6 +93,8 @@ namespace aaasrv.ProdService
 
             //articleRepository.context.Set<User>().Attach(author);
             articleRepository.Add(article);
+
+            return article.Id;
         }
 	}
 }

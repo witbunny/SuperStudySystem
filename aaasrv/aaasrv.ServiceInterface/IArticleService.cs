@@ -11,8 +11,9 @@ namespace aaasrv.ServiceInterface
     {
         void Publish(NewModel model, int currentUserId);
 
-        void Publish(NewModel model);
+        int Publish(NewModel model);
 		EditModel Find(int id);
 		void Edit(int id, EditModel model);
+		SingleModel GetById(int id);
 	}
 }
