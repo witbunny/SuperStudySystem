@@ -43,6 +43,7 @@ namespace aaaui.front.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult New(NewModel model)
 		{
 

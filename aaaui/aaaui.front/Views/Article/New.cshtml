@@ -15,6 +15,7 @@
         <label>正文：</label>
         @Html.TextAreaFor(m => m.Body)
     </div>
+    @Html.AntiForgeryToken()
 
     <button type="submit">提交</button>
 }
