@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace aaaui.front.Controllers
 {
@@ -32,30 +33,34 @@ namespace aaaui.front.Controllers
 			this.articleService = articleService;
 		}
 
+		//[OutputCache(Duration = 10/*, VaryByParam = "None"*//*, Location = OutputCacheLocation.Any*/)]
+		[OutputCache(CacheProfile = "ArticleIndex")]
 		public ActionResult Index(int id)
 		{
-			string key = Keys.GetCacheKey(nameof(ArticleController), nameof(Index), id);
-			
-			if (HttpContext.Cache[key] == null)
-			{
-				//HttpContext.Cache[key] = articleService.GetById(id);
+			//string key = Keys.GetCacheKey(nameof(ArticleController), nameof(Index), id);
 
-				HttpContext.Cache.Insert(key,
-					articleService.GetById(id),
-					/*new SqlCacheDependency("aaaef", "Articles")*/null,
-					DateTime.Now.AddMinutes(1)/*DateTime.MaxValue*/,
-					/*new TimeSpan(0, 3, 0)*/TimeSpan.Zero,
-					CacheItemPriority.High,
-					(k, v, r) =>
-					{
-						Trace.WriteLine(k);
-						Trace.WriteLine(v);
-						Trace.WriteLine(r);
-					});
-			}
-			
-			//SingleModel model = articleService.GetById(id);
-			return View((SingleModel)HttpContext.Cache[key]);
+			//if (HttpContext.Cache[key] == null)
+			//{
+			//	//HttpContext.Cache[key] = articleService.GetById(id);
+
+			//	HttpContext.Cache.Insert(key,
+			//		articleService.GetById(id),
+			//		/*new SqlCacheDependency("aaaef", "Articles")*/null,
+			//		DateTime.Now.AddMinutes(1)/*DateTime.MaxValue*/,
+			//		/*new TimeSpan(0, 3, 0)*/TimeSpan.Zero,
+			//		CacheItemPriority.High,
+			//		(k, v, r) =>
+			//		{
+			//			Trace.WriteLine(k);
+			//			Trace.WriteLine(v);
+			//			Trace.WriteLine(r);
+			//		});
+			//}
+
+			//return View((SingleModel)HttpContext.Cache[key]);
+
+			SingleModel model = articleService.GetById(id);
+			return View(model);
 		}
 
 		public ActionResult New()
