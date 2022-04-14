@@ -13,5 +13,10 @@ namespace aaaglb.Global
 		public const string Password = "Password";
 		public const string DbContext = "DbContext";
 		public const string Captcha = "Captcha";
+
+		public static string GetCacheKey(string controller, string action, params object[] parameters)
+		{
+			return $"{controller}-{action}-" + string.Join("_", parameters);
+		}
 	}
 }

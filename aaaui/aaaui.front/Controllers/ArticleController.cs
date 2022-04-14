@@ -7,9 +7,11 @@ using aaaui.front.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Mvc;
 
 namespace aaaui.front.Controllers
@@ -32,8 +34,28 @@ namespace aaaui.front.Controllers
 
 		public ActionResult Index(int id)
 		{
-			SingleModel model = articleService.GetById(id);
-			return View(model);
+			string key = Keys.GetCacheKey(nameof(ArticleController), nameof(Index), id);
+			
+			if (HttpContext.Cache[key] == null)
+			{
+				//HttpContext.Cache[key] = articleService.GetById(id);
+
+				HttpContext.Cache.Insert(key,
+					articleService.GetById(id),
+					/*new SqlCacheDependency("aaaef", "Articles")*/null,
+					DateTime.Now.AddMinutes(1)/*DateTime.MaxValue*/,
+					/*new TimeSpan(0, 3, 0)*/TimeSpan.Zero,
+					CacheItemPriority.High,
+					(k, v, r) =>
+					{
+						Trace.WriteLine(k);
+						Trace.WriteLine(v);
+						Trace.WriteLine(r);
+					});
+			}
+			
+			//SingleModel model = articleService.GetById(id);
+			return View((SingleModel)HttpContext.Cache[key]);
 		}
 
 		public ActionResult New()

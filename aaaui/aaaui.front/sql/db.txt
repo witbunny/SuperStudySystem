@@ -1,0 +1,3 @@
+﻿aspnet_regsql.exe -S localhost\SQLEXPRESS -E -d aaaEF -ed
+
+aspnet_regsql.exe -S localhost\SQLEXPRESS -E -d aaaEF -t Articles -et
