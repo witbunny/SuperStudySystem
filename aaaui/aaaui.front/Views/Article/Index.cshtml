@@ -1,4 +1,5 @@
-﻿@model aaasrv.ViewModel.Article.SingleModel
+﻿@*using DevTrends.MvcDonutCaching;*@
+@model aaasrv.ViewModel.Article.SingleModel
 @{
     ViewBag.Title = "Index";
 }
@@ -6,4 +7,9 @@
 <h2>Index</h2>
 
 <h1>@Model.Title</h1>
+
+@Html.Action("_User", "Shared", true)
+
 <p>@Html.Raw(Model.Body)</p>
+
+@Html.Action("_User", "Shared", true)

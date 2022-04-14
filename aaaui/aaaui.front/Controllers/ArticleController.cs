@@ -4,6 +4,7 @@ using aaasrv.ViewModel;
 using aaasrv.ViewModel.Article;
 using aaaui.front.Filters;
 using aaaui.front.Helpers;
+using DevTrends.MvcDonutCaching;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -34,7 +35,8 @@ namespace aaaui.front.Controllers
 		}
 
 		//[OutputCache(Duration = 10/*, VaryByParam = "None"*//*, Location = OutputCacheLocation.Any*/)]
-		[OutputCache(CacheProfile = "ArticleIndex")]
+		//[OutputCache(CacheProfile = "ArticleIndex")]
+		[DonutOutputCache(CacheProfile = "ArticleIndex")]
 		public ActionResult Index(int id)
 		{
 			//string key = Keys.GetCacheKey(nameof(ArticleController), nameof(Index), id);
@@ -115,6 +117,9 @@ namespace aaaui.front.Controllers
 		public ActionResult Edit(int id, EditModel model)
 		{
 			articleService.Edit(id, model);
+
+			OutputCacheManager cacheManager = new OutputCacheManager();
+			cacheManager.RemoveItem("Article", "Index", new { id = id });
 
 			return RedirectToAction("Index", new { id = id });
 		}

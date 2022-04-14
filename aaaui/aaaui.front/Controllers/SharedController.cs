@@ -1,4 +1,5 @@
 ﻿using aaaglb.Global;
+using aaasrv.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +13,16 @@ namespace aaaui.front.Controllers
 {
     public class SharedController : Controller
     {
-        
+        public ActionResult _User()
+		{
+			UserModel model = new UserModel
+			{
+				Id = 1,
+				Name = "leo"
+			};
+
+			return PartialView(model);
+		}
 
         public ActionResult _GetCaptcha()
 		{
