@@ -8,6 +8,7 @@ using DevTrends.MvcDonutCaching;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -39,6 +40,9 @@ namespace aaaui.front.Controllers
 		[DonutOutputCache(CacheProfile = "ArticleIndex")]
 		public ActionResult Index(int id)
 		{
+			string cs = ConfigurationManager.ConnectionStrings["aaaef"].ConnectionString;
+			string host = ConfigurationManager.AppSettings["host"];
+
 			//string key = Keys.GetCacheKey(nameof(ArticleController), nameof(Index), id);
 
 			//if (HttpContext.Cache[key] == null)
